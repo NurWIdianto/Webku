@@ -1,70 +1,24 @@
-$("#tombol1").click(function() {
-	var nilai = $("#tombol1").val();
-	if (nilai=="Tampilkan") {
-		$.ajax({
-          	type        : "GET",
-		    dataType    : "JSON",
-          	url			: "http://localhost/webku/assests/json/content.json",
-			data 		: {description:"value",created_at:"value",fullname:"value",user_photo:"value"},
-			success     : function(data){
-               $("#username1").text(data['fullname']);
-               var tanggal = format_tanggal(data['created_at']);
-               $("#tanggal1").text(tanggal);
-               $("#kalimat1").text(data['description']);
-               $("#photo1").attr("src",data['user_photo']);
-          	},
-          	error		:function(error){
-              console.log('error');
-          	}
-	    });
-		$("#gambar1").show();
-		$("#kalimat1").show();
-		$("#username1").show();
-		$("#tanggal1").show();
-		$("#tombol1").val("Hilangkan");
-	}else{
-		$("#tombol1").val("Tampilkan");
-		$("#gambar1").hide();
-		$("#kalimat1").hide();
-		$("#username1").hide();
-		$("#tanggal1").hide();
-		$("#photo1").attr("src",'http://localhost/webku/assests/image/user.png');
-		
-	}
-});
-
-$("#tombol2").click(function() {
-	var nilai = $("#tombol2").val();
-	if (nilai=="Tampilkan") {
-		$.ajax({
-          	type        : "GET",
-		    dataType    : "JSON",
-          	url			: "http://localhost/webku/assests/json/content.json",
-			data 		: {description:"value",created_at:"value",fullname:"value",user_photo2:"value"},
-			success     : function(data){
-               $("#username2").text(data['fullname2']);
-               var tanggal = format_tanggal(data['created_at2']);
-               $("#tanggal2").text(tanggal);
-               $("#kalimat2").text(data['description2']);
-               $("#photo2").attr("src",data['user_photo2']);
-          	},
-          	error		:function(error){
-              console.log('error');
-          	}
-	    });
-		$("#gambar2").show();
-		$("#kalimat2").show();
-		$("#username2").show();
-		$("#tanggal2").show();
-		$("#tombol2").val("Hilangkan");
-	}else{
-		$("#tombol2").val("Tampilkan");
-		$("#gambar2").hide();
-		$("#kalimat2").hide();
-		$("#username2").hide();
-		$("#tanggal2").hide();
-		$("#photo2").attr("src",'http://localhost/webku/assests/image/user.png');
-	}
+$(document).ready(function(){
+	$.ajax({
+      	type        : "GET",
+	    dataType    : "json",
+      	url			: "http://localhost/webku/assests/json/content.json",
+		success     : function(data){
+           	$("#username1").text(data.result.content[0].fullname);
+           	$("#username2").text(data.result.content[1].fullname);
+           	var tanggal1 = format_tanggal(data.result.content[0].created_at);
+           	var tanggal2 = format_tanggal(data.result.content[1].created_at);
+           	$("#tanggal1").text(tanggal1);
+           	$("#tanggal2").text(tanggal2);
+           	$("#kalimat1").text(data.result.content[0].description);
+           	$("#kalimat2").text(data.result.content[1].description);
+           	$("#photo1").attr("src",data.result.content[0].user_photo);
+           	$("#photo2").attr("src",data.result.content[1].user_photo);
+      	},
+      	error: function (xhr, status, msg) {
+        alert('Status: ' + status + "\n" + msg);
+      }
+    });
 });
 
 function format_tanggal(isi){
@@ -100,4 +54,20 @@ function format_tanggal(isi){
 	}
 	var kalimat = tanggal + " " + bulan2 + " " + tahun;
 	return kalimat;
+}
+
+$(document).ready(function(){
+	slideshow();
+});
+
+function slideshow() {
+	setTimeout(function () {
+        $("#popup").hide();
+        $("#popup2").show();
+    }, 1000);
+    setTimeout(function () {
+        $("#popup").show();
+        $("#popup2").hide();
+        slideshow()
+    }, 2000);
 }

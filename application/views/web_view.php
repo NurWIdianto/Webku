@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <title>Nur Widianto</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assests/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assests/css/bootstrap.min.css">
   </head>
   <body>
@@ -54,12 +55,12 @@
                 <h4 id="tanggal1"></h4>
               </div>
               <div class="pull-right">
-                <input type="button" name="tombol1" id="tombol1" class="btn btn-primary media-object" value="Tampilkan">
+                <h4><span class="label label-info" id="popup">Nur Widianto</span></h4>
               </div>
           </div>
           </div>
           <div class="panel-body">
-            <img class="img-responsive" src="<?php echo base_url(); ?>./assests/image/Koala.png" id="gambar1" style="display: none;">
+            <img class="img-responsive" src="<?php echo base_url(); ?>./assests/image/Koala.png" id="gambar1">
           </div>
           <div class="panel-footer">
             <p class="text-justify" id="kalimat1"></p>
@@ -78,12 +79,12 @@
                 <h4 id="tanggal2"></h4>
               </div>
               <div class="pull-right">
-                <input type="button" name="tombol2" id="tombol2" class="btn btn-primary media-object" value="Tampilkan">
+                <h4><span class="label label-info" id="popup2" style="display: none;">Nur Widianto</span></h4>
               </div>
           </div>
           </div>
           <div class="panel-body">
-            <img class="img-responsive" src="<?php echo base_url(); ?>./assests/image/Penguins.png" id="gambar2" style="display: none;">
+            <img class="img-responsive" src="<?php echo base_url(); ?>./assests/image/Penguins.png" id="gambar2">
           </div>
           <div class="panel-footer">
             <p class="text-justify" id="kalimat2"></p>
